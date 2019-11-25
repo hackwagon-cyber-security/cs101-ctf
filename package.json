@@ -1,0 +1,26 @@
+{
+  "name": "cs101_ctf",
+  "version": "1.0.0",
+  "description": "Project Directory for CS101 - CTF",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackwagon-cyber-security/cs101-tools.git"
+  },
+  "author": "CS101 Teaching Team (Tan Kee Hock, Winston Ho, Timothy Tan, Kelvin Chia, Jon Chew)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hackwagon-cyber-security/cs101-tools/issues"
+  },
+  "homepage": "https://github.com/hackwagon-cyber-security/cs101-tools#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-stackman": "^0.2.0",
+    "mysql": "^2.17.1",
+    "util": "^0.12.1"
+  }
+}
