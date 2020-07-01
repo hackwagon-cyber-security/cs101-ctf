@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  wordpress:
+    build: ../
+    image: hackwagon_wordpress
+    entrypoint: /bin/bash -c "echo \"define('WP_HOME', 'http://$$SITENAME');define('WP_SITEURL', 'http://$$SITENAME');\" >> /usr/src/wordpress/wp-config-sample.php && docker-entrypoint.sh apache2-foreground"
+    restart: always
+    ports:
+      - "8081:80
+      - "9081:9081"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: hackwagon
+      WORDPRESS_DB_PASSWORD: hackwagon
+      WORDPRESS_DB_NAME: hackwagon
+      SITENAME: "challenges.supersecurity.cf:8081"
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: hackwagon
+      MYSQL_USER: hackwagon
+      MYSQL_PASSWORD: hackwagon
+      MYSQL_ROOT_PASSWORD: 'CS101_SuperSecurePassword'
+    volumes:
+      - ../docker-entrypoint-initdb.d/hackwagon1.sql.gz:/docker-entrypoint-initdb.d/hackwagon1.sql.gz:ro
