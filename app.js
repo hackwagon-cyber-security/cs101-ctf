@@ -28,7 +28,7 @@ app.post('/challenges/3', function (req, res, next) {
             if(results != null && results.length == 1) {
                 res.write('<b>Good Job!</b><br>Some treats for you!<p>cs101-ctf{5404242C4D65C6EE1C6E3808B7CC2EB8}</p>');
             } else {
-                res.write('<b>Authentication Fail!</b><br>Click <a href="/challenges/3/">here</a> to return!');
+                res.write('<b>Authentication Fail!</b><br>Click <a href="">here</a> to return!');
             }
         }
         res.end();
@@ -115,6 +115,12 @@ app.get('/challenges/7', function (req, res, next) {
         }
     })
 });
+
+app.get('/', function (req, res, next) {
+    res.write('node application is running');
+    res.end();
+});
+
 
 app.use(require('express-stackman')());
 

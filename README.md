@@ -1,9 +1,37 @@
 # Setup for CTF Box
 
+``` bash
+# Installation Guide: https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04
+# apache
+sudo apt update
+sudo apt install apache2 -y
+
+# mysql
+sudo apt install mysql-server
+sudo mysql_secure_installation
+# root:toor
+# without "VALIDATE PASSWORD PLUGIN"
+
+# php
+sudo apt install php libapache2-mod-php php-mysql -y
+
+# install node
+sudo apt install nodejs -y
+sudo apt install npm -y
+
+# To run node_app
+screen -S node_app
+node app.js
+
+# Install modsecurity
+sudo apt-get install libapache2-mod-security2 -y
+```
+
 ## Database bootstrap
+
 ``` mysql
 # Create database;
-drop database if cs101_ctf;
+drop database if exists cs101_ctf;
 create database cs101_ctf;
 use cs101_ctf;
 
@@ -35,6 +63,11 @@ create table advanced_ctf_sqli_challenge (
 );
 
 INSERT INTO advanced_ctf_sqli_challenge (email, password, role) VALUES ('admin@supersecurity.cf','cs101-ctf{7069DC153268D60C702EC495346843E2}', 'admin');
+
+DROP USER IF EXISTS 'app_service'@'localhost';
+CREATE USER 'app_service'@'localhost' IDENTIFIED WITH mysql_native_password BY 'app_service';
+GRANT SELECT, INSERT ON cs101_ctf.* TO 'app_service'@'localhost';
+FLUSH PRIVILEGES;
 ```
 
 ## Apache Nodejs Proxy
@@ -75,7 +108,7 @@ sudo a2enmod proxy_http
 		# after it has been globally disabled with "a2disconf".
 		#Include conf-available/serve-cgi-bin.conf
 
-		ServerName ctf.supersecurity.cf
+		ServerName challenges.ultrasecurity.cf
 
 		ErrorDocument 400 /error/400.html
 
@@ -114,17 +147,18 @@ Installing and Configuring ModSecurity [Guide](https://www.digitalocean.com/comm
 1. Ensure that Basic Directives are enabled
 2. Modify to load only our custom rules
 
-``` 
- # /usr/share/modsecurity-crs/owasp-crs.load 
- Include /etc/modsecurity/crs/crs-setup.conf
- IncludeOptional /etc/modsecurity/crs/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
- Include /usr/share/modsecurity-crs/rules/*.conf
- IncludeOptional /etc/modsecurity/crs/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf
-
+``` bash 
+# /etc/apache2/mods-enabled/security2.conf
+# ...
+# Modify after
+# /usr/share/modsecurity-crs/owasp-crs.load 
+Include /etc/modsecurity/crs/crs-setup.conf
+IncludeOptional /etc/modsecurity/crs/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+Include /usr/share/modsecurity-crs/rules/*.conf
+IncludeOptional /etc/modsecurity/crs/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf
 ```
 
-
-```
+``` bash
 # CS101-CTF-XSS.conf
 # XSS vectors making use of event handlers like onerror, onload etc, e.g., <body onload="alert(1)">
 SecRule REQUEST_COOKIES|!REQUEST_COOKIES:/__utm/|REQUEST_COOKIES_NAMES|REQUEST_HEADERS:User-Agent|REQUEST_HEADERS:Referer|ARGS_NAMES|ARGS|XML:/* "(?i)([\s\"'`;\/0-9\=\x0B\x09\x0C\x3B\x2C\x28\x3B]+onl[a-zA-Z]+[\s\x0B\x09\x0C\x3B\x2C\x28\x3B]*?=)" \
@@ -170,4 +204,16 @@ SecRule REQUEST_COOKIES|!REQUEST_COOKIES:/__utm/|REQUEST_COOKIES_NAMES|REQUEST_H
 	deny,\
 	status:400,\
 	log,msg:'XSS Detected!'
+```
+
+## Others
+
+### PHP Helper Codes
+
+``` php
+if (isset($_REQUEST['source'])) {
+    header('Content-Type: text/plain');
+    print(file_get_contents(__file__));
+    exit(0);
+}
 ```
