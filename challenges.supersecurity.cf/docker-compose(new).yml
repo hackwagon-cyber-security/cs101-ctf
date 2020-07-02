@@ -191,13 +191,4 @@ services:
       MYSQL_PASSWORD: hackwagon
       MYSQL_ROOT_PASSWORD: 'CS101_SuperSecurePassword'
     volumes:
-      - ./docker-entrypoint-initdb.d/hackwagon1.sql.gz:/docker-entrypoint-initdb.d/hackwagon1.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon2.sql.gz:/docker-entrypoint-initdb.d/hackwagon2.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon3.sql.gz:/docker-entrypoint-initdb.d/hackwagon3.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon4.sql.gz:/docker-entrypoint-initdb.d/hackwagon4.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon5.sql.gz:/docker-entrypoint-initdb.d/hackwagon5.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon6.sql.gz:/docker-entrypoint-initdb.d/hackwagon6.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon7.sql.gz:/docker-entrypoint-initdb.d/hackwagon7.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon8.sql.gz:/docker-entrypoint-initdb.d/hackwagon8.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon9.sql.gz:/docker-entrypoint-initdb.d/hackwagon9.sql.gz:ro
-      - ./docker-entrypoint-initdb.d/hackwagon10.sql.gz:/docker-entrypoint-initdb.d/hackwagon10.sql.gz:ro
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
