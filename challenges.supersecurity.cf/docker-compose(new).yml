@@ -24,129 +24,149 @@ services:
   wp_team_1:
     <<: *wordpress
     ports:
-      - "8081:80
+      - "8081:80"
       - "9081:9081"
     environment:
       SITENAME: "challenges.supersecurity.cf:8081"
+      WORDPRESS_DB_NAME: hackwagon1
 
-  db_team_1:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon1.sql.gz:/docker-entrypoint-initdb.d/hackwagon1.sql.gz:ro
+
+  # db_team_1:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon1.sql.gz:/docker-entrypoint-initdb.d/hackwagon1.sql.gz:ro
 
   wp_team_2:
     <<: *wordpress
     ports:
-      - "8082:80
+      - "8082:80"
       - "9082:9082"
     environment:
       SITENAME: "challenges.supersecurity.cf:8082"
+      WORDPRESS_DB_NAME: hackwagon2
 
-  db_team_2:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon2.sql.gz:/docker-entrypoint-initdb.d/hackwagon2.sql.gz:ro
+
+  # db_team_2:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon2.sql.gz:/docker-entrypoint-initdb.d/hackwagon2.sql.gz:ro
 
   wp_team_3:
     <<: *wordpress
     ports:
-      - "8083:80
+      - "8083:80"
       - "9083:9083"
     environment:
       SITENAME: "challenges.supersecurity.cf:8083"
+      WORDPRESS_DB_NAME: hackwagon3
 
-  db_team_3:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon3.sql.gz:/docker-entrypoint-initdb.d/hackwagon3.sql.gz:ro
+
+  # db_team_3:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon3.sql.gz:/docker-entrypoint-initdb.d/hackwagon3.sql.gz:ro
 
   wp_team_4:
     <<: *wordpress
     ports:
-      - "8084:80
+      - "8084:80"
       - "9084:9084"
     environment:
       SITENAME: "challenges.supersecurity.cf:8084"
+      WORDPRESS_DB_NAME: hackwagon4
 
-  db_team_4:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon4.sql.gz:/docker-entrypoint-initdb.d/hackwagon4.sql.gz:ro
+
+  # db_team_4:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon4.sql.gz:/docker-entrypoint-initdb.d/hackwagon4.sql.gz:ro
 
   wp_team_5:
     <<: *wordpress
     ports:
-      - "8085:80
+      - "8085:80"
       - "9085:9085"
     environment:
       SITENAME: "challenges.supersecurity.cf:8085"
+      WORDPRESS_DB_NAME: hackwagon5
 
-  db_team_5:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon5.sql.gz:/docker-entrypoint-initdb.d/hackwagon5.sql.gz:ro
+
+  # db_team_5:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon5.sql.gz:/docker-entrypoint-initdb.d/hackwagon5.sql.gz:ro
 
   wp_team_6:
     <<: *wordpress
     ports:
-      - "8086:80
+      - "8086:80"
       - "9086:9086"
     environment:
       SITENAME: "challenges.supersecurity.cf:8086"
+      WORDPRESS_DB_NAME: hackwagon6
 
-  db_team_6:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon6.sql.gz:/docker-entrypoint-initdb.d/hackwagon6.sql.gz:ro
+
+  # db_team_6:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon6.sql.gz:/docker-entrypoint-initdb.d/hackwagon6.sql.gz:ro
 
   wp_team_7:
     <<: *wordpress
     ports:
-      - "8087:80
+      - "8087:80"
       - "9087:9087"
     environment:
       SITENAME: "challenges.supersecurity.cf:8087"
+      WORDPRESS_DB_NAME: hackwagon7
 
-  db_team_7:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon7.sql.gz:/docker-entrypoint-initdb.d/hackwagon7.sql.gz:ro
+
+  # db_team_7:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon7.sql.gz:/docker-entrypoint-initdb.d/hackwagon7.sql.gz:ro
 
   wp_team_8:
     <<: *wordpress
     ports:
-      - "8088:80
+      - "8088:80"
       - "9088:9088"
     environment:
       SITENAME: "challenges.supersecurity.cf:8088"
+      WORDPRESS_DB_NAME: hackwagon8
 
-  db_team_8:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon8.sql.gz:/docker-entrypoint-initdb.d/hackwagon8.sql.gz:ro
+
+  # db_team_8:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon8.sql.gz:/docker-entrypoint-initdb.d/hackwagon8.sql.gz:ro
 
   wp_team_9:
     <<: *wordpress
     ports:
-      - "8089:80
+      - "8089:80"
       - "9089:9089"
     environment:
       SITENAME: "challenges.supersecurity.cf:8089"
+      WORDPRESS_DB_NAME: hackwagon9
 
-  db_team_9:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon9.sql.gz:/docker-entrypoint-initdb.d/hackwagon9.sql.gz:ro
+
+  # db_team_9:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon9.sql.gz:/docker-entrypoint-initdb.d/hackwagon9.sql.gz:ro
 
   wp_team_10:
     <<: *wordpress
     ports:
-      - "8090:80
+      - "8090:80"
       - "9090:9090"
     environment:
       SITENAME: "challenges.supersecurity.cf:8090"
+      WORDPRESS_DB_NAME: hackwagon10
 
-  db_team_10:
-    <<: *db
-    volumes:
-      - ../docker-entrypoint-initdb.d/hackwagon10.sql.gz:/docker-entrypoint-initdb.d/hackwagon10.sql.gz:ro
+
+  # db_team_10:
+  #   <<: *db
+  #   volumes:
+  #     - ../docker-entrypoint-initdb.d/hackwagon10.sql.gz:/docker-entrypoint-initdb.d/hackwagon10.sql.gz:ro
