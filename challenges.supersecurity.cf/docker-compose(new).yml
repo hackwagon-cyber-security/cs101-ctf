@@ -1,7 +1,7 @@
-version: '3.1'
+version: '3.4'
 
 x-wordpress: &wordpress
-  build: ../
+  build: ./
   image: hackwagon_wordpress
   entrypoint: /bin/bash -c "echo \"define('WP_HOME', 'http://$$SITENAME');define('WP_SITEURL', 'http://$$SITENAME');\" >> /usr/src/wordpress/wp-config-sample.php && docker-entrypoint.sh apache2-foreground"
   restart: always
