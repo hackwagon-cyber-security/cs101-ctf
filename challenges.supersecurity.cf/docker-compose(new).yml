@@ -5,11 +5,12 @@ x-wordpress: &wordpress
   image: hackwagon_wordpress
   entrypoint: /bin/bash -c "echo \"define('WP_HOME', 'http://$$SITENAME');define('WP_SITEURL', 'http://$$SITENAME');\" >> /usr/src/wordpress/wp-config-sample.php && docker-entrypoint.sh apache2-foreground"
   restart: always
-  environment:
-    WORDPRESS_DB_HOST: db
-    WORDPRESS_DB_USER: hackwagon
-    WORDPRESS_DB_PASSWORD: hackwagon
-    WORDPRESS_DB_NAME: hackwagon
+
+x-wp-environment: &wp-env
+  WORDPRESS_DB_HOST: db
+  WORDPRESS_DB_USER: hackwagon
+  WORDPRESS_DB_PASSWORD: hackwagon
+  WORDPRESS_DB_NAME: hackwagon
 
 x-db: &db
   image: mysql:5.7
@@ -27,6 +28,7 @@ services:
       - "8001:80"
       - "4441:4441"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8001"
       WORDPRESS_DB_NAME: hackwagon1
 
@@ -42,6 +44,7 @@ services:
       - "8002:80"
       - "4442:4442"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8002"
       WORDPRESS_DB_NAME: hackwagon2
 
@@ -57,6 +60,7 @@ services:
       - "8003:80"
       - "4443:4443"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8003"
       WORDPRESS_DB_NAME: hackwagon3
 
@@ -72,6 +76,7 @@ services:
       - "8004:80"
       - "4444:4444"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8004"
       WORDPRESS_DB_NAME: hackwagon4
 
@@ -87,6 +92,7 @@ services:
       - "8005:80"
       - "4445:4445"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8005"
       WORDPRESS_DB_NAME: hackwagon5
 
@@ -102,6 +108,7 @@ services:
       - "8006:80"
       - "4446:4446"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8006"
       WORDPRESS_DB_NAME: hackwagon6
 
@@ -117,6 +124,7 @@ services:
       - "8007:80"
       - "4447:4447"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8007"
       WORDPRESS_DB_NAME: hackwagon7
 
@@ -132,6 +140,7 @@ services:
       - "8008:80"
       - "4448:4448"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8008"
       WORDPRESS_DB_NAME: hackwagon8
 
@@ -147,6 +156,7 @@ services:
       - "8009:80"
       - "4449:4449"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8009"
       WORDPRESS_DB_NAME: hackwagon9
 
@@ -162,6 +172,7 @@ services:
       - "8010:80"
       - "4450:4450"
     environment:
+      <<: *wp-env
       SITENAME: "challenges.supersecurity.cf:8010"
       WORDPRESS_DB_NAME: hackwagon10
 
